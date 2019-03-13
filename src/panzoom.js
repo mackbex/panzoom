@@ -1203,6 +1203,9 @@
 				}
 				startPageX = event.pageX;
 				startPageY = event.pageY;
+				
+				if(startPageX == null) startPageX = event.originalEvent.pageX;
+				if(startPageY == null) startPageY = event.originalEvent.pageY;
 			};
 
 			setStart(event, touches);
@@ -1241,6 +1244,8 @@
 
 				if (!coords) {
 					coords = e;
+					if(coords.pageX == null) coords.pageX = coords.originalEvent.pageX;
+					if(coords.pageY == null) coords.pageY = coords.originalEvent.pageY;
 				}
 
 				self.pan(
